@@ -12,6 +12,14 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int _squidMainHealth = 100;
 
+    [SerializeField] private SquidPhases _squidPhase = SquidPhases.PHASE_ONE;
+
+    public GameObject squidModelOne;
+
+    public GameObject squidModelTwo;
+
+    public GameObject squidModelThree;
+
     // Private constructor
     private GameManager() {}
 
@@ -33,7 +41,7 @@ public class GameManager : MonoBehaviour
         return instance;
     }
 
-    // Getters/Setters for health
+    // Getters/Setters
     public int playerHealth
     {
         get
@@ -60,13 +68,38 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public SquidPhases squidPhase
+    {
+        get
+        {
+            return _squidPhase;
+        }
+
+        set
+        {
+            _squidPhase = value;
+        }
+    }
+
     void Start()
     {
-        
+        // Disable 2nd and 3rd phase squid models
+        squidModelOne.SetActive(true);
+        squidModelTwo.SetActive(false);
+        squidModelThree.SetActive(false);
     }
 
     void Update()
     {
-        
+        if (SquidPhases.PHASE_TWO.Equals(_squidPhase))
+        {
+            squidModelOne.SetActive(false);
+            squidModelTwo.SetActive(true);
+        } 
+        else if (SquidPhases.PHASE_THREE.Equals(_squidPhase))
+        {
+            squidModelTwo.SetActive(false);
+            squidModelThree.SetActive(true);
+        }
     }
 }
