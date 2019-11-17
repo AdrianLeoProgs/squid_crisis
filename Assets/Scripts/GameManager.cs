@@ -90,11 +90,11 @@ public class GameManager : MonoBehaviour
 
     void Awake() 
     {
-        for (List<GameObject> tentacles : phaseOneTentacleSet)
+        foreach (List<GameObject> tentacles in phaseOneTentacleSet)
         {
-            for (tentacle : tentacles)
+            foreach (GameObject tentacle in tentacles)
             {
-                tentacle.SetEnabled(false);
+                tentacle.SetActive(false);
             }
         }
     }
@@ -108,15 +108,15 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // Remove tentacle list from tentacleSet if said list is empty (shift the "first" index)
-        if (phaseOneTentacleSet.First().Count < 1)
+        if (phaseOneTentacleSet[0].Count < 1)
         {
-            phaseOneTentacleSet.Remove(phaseOneTentacleSet.First());
+            phaseOneTentacleSet.Remove(phaseOneTentacleSet[0]);
         }
 
         // Always enable the first List of tentacles in tentacleSet (since list will change dynamically)
-        for (GameObject tentacle : phaseOneTentacleSet.First())
+        foreach (GameObject tentacle in phaseOneTentacleSet[0])
         {
-            tentacle.SetEnabled(true);
+            tentacle.SetActive(true);
         }
 
         // Check for tentacle set count of current phase (more can be added later)
