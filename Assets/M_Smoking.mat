@@ -18,6 +18,7 @@ Material:
     RenderType: Transparent
   disabledShaderPasses:
   - MOTIONVECTORS
+  - DistortionVectors
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -146,7 +147,7 @@ Material:
     - _DistortionBlurSrcBlend: 1
     - _DistortionDepthTest: 1
     - _DistortionDstBlend: 1
-    - _DistortionEnable: 1
+    - _DistortionEnable: 0
     - _DistortionOnly: 0
     - _DistortionScale: 1
     - _DistortionSrcBlend: 1
@@ -249,4 +250,4 @@ Material:
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
-    - _UnlitColor: {r: 0.27058825, g: 0.27058825, b: 0.27058825, a: 1}
+    - _UnlitColor: {r: 0.2705882, g: 0.2705882, b: 0.2705882, a: 0.47058824}
