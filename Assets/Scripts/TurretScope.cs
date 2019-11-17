@@ -33,10 +33,11 @@ public class TurretScope : MonoBehaviour
             bool raycasthit = Physics.Raycast(transform.position, forward, out hit, 100);
             if (raycasthit)
             {
-                bool colliderhit = hit.collider.gameObject.CompareTag("Squid");
+                bool colliderhit = hit.collider.gameObject.CompareTag("Target");
                 if (colliderhit)
                 {
-                    GameManager.getInstance.squidMainHealth -= (Time.deltaTime * 10);
+                    // destroy target instance
+                    Destroy(hit.collider.gameObject);
                 }
             }
 
