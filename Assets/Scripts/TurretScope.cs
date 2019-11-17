@@ -43,7 +43,7 @@ public class TurretScope : MonoBehaviour
                 if (colliderhit)
                 {
                     // destroy target instance
-                    GameManager.getInstance.activateNextTentacle(hitObject);
+                    GameManager.getInstance.removeTarget(hitObject);
                     // Destroy(hit.collider.gameObject);
                 }
                 if (hit.collider.gameObject.CompareTag("Water"))

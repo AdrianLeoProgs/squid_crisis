@@ -133,11 +133,18 @@ public class GameManager : MonoBehaviour
         //}
     }
 
-    public void activateNextTentacle(GameObject tentacle)
+    public void removeTarget(GameObject target)
     {
+        // Remove target
         if (phaseOneTentacleSet != null && phaseOneTentacleSet[0] != null)
         {
-            phaseOneTentacleSet.Remove(tentacle);
+            phaseOneTentacleSet[0].GetComponent<List<GameObject>>().Remove(target);
+
+            // If targets are less than 1, remove the tentacle from the tentacle set
+            if (phaseOneTentacleSet[0].GetComponent<List<GameObject>>().Count < 1)
+            {
+                phaseOneTentacleSet.Remove(phaseOneTentacleSet[0]);
+            }
         }
     }
 }
