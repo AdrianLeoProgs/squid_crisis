@@ -135,13 +135,15 @@ public class GameManager : MonoBehaviour
 
     public void removeTarget(GameObject target)
     {
+        Debug.Log("Removing target: " + target, target);
         // Remove target
         if (phaseOneTentacleSet != null && phaseOneTentacleSet[0] != null)
         {
-            phaseOneTentacleSet[0].GetComponent<List<GameObject>>().Remove(target);
+            Debug.Log("Removing target...");
+            phaseOneTentacleSet[0].GetComponent<Tentacle>().targets.Remove(target);
 
             // If targets are less than 1, remove the tentacle from the tentacle set
-            if (phaseOneTentacleSet[0].GetComponent<List<GameObject>>().Count < 1)
+            if (phaseOneTentacleSet[0].GetComponent<Tentacle>().targets.Count < 1)
             {
                 phaseOneTentacleSet.Remove(phaseOneTentacleSet[0]);
             }
