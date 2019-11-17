@@ -4,41 +4,46 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private static bool m_shuttingDown = false;
+
     private static readonly object padlock = new object();
 
-    private static GameManager instance = null;
+    private static GameManager instance;
 
     [SerializeField] private int _playerHealth = 5;
 
-    [SerializeField] private int _squidMainHealth = 100;
+    [SerializeField] private float _squidMainHealth = 100f;
 
     [SerializeField] private SquidPhases _squidPhase = SquidPhases.PHASE_ONE;
 
-    public GameObject squidModelOne;
-
-    public GameObject squidModelTwo;
-
-    public GameObject squidModelThree;
-
-    // Private constructor
-    private GameManager() {}
+    public Animator animator;
 
     // Ensure thread safety for Game Manager
-    public static GameManager getInstance()
+    public static GameManager getInstance
     {
-        if (instance == null)
+        get
         {
-            // synchronized zone
+            if (m_shuttingDown)
+            {
+                return null;
+            }
             lock (padlock)
             {
                 if (instance == null)
                 {
-                    instance = new GameManager();
+                    instance = (GameManager)FindObjectOfType(typeof(GameManager));
+                    if (instance == null)
+                    {
+                        print("in here");
+                        var singleObj = new GameObject();
+                        instance = singleObj.AddComponent<GameManager>();
+                        singleObj.name = "GameManager";
+                        DontDestroyOnLoad(singleObj);
+                    }
                 }
             }
+            return instance;
         }
-
-        return instance;
     }
 
     // Getters/Setters
@@ -55,7 +60,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public int squidMainHealth
+    public float squidMainHealth
     {
         get
         {
@@ -83,23 +88,21 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        // Disable 2nd and 3rd phase squid models
-        squidModelOne.SetActive(true);
-        squidModelTwo.SetActive(false);
-        squidModelThree.SetActive(false);
+        // Disable 2nd and 3rd phase squid phases
+        animator.SetBool("PhaseOne", true);
     }
 
     void Update()
     {
         if (SquidPhases.PHASE_TWO.Equals(_squidPhase))
         {
-            squidModelOne.SetActive(false);
-            squidModelTwo.SetActive(true);
-        } 
+            animator.SetBool("PhaseOne", false);
+            animator.SetBool("PhaseTwo", true);
+        }
         else if (SquidPhases.PHASE_THREE.Equals(_squidPhase))
         {
-            squidModelTwo.SetActive(false);
-            squidModelThree.SetActive(true);
+            animator.SetBool("PhaseTwo", false);
+            animator.SetBool("PhaseThree", true);
         }
     }
 }
