@@ -119,6 +119,11 @@ public class GameManager : MonoBehaviour
            squidPhase = SquidPhases.PHASE_TWO;
             Debug.Log("****************************  YOU WIN!!!!!  ****************************");
        }
+        Debug.Log("Player Health: " + playerHealth);
+        if (playerHealth < 1)
+        {
+            Debug.Log("****************************  YOU LOSE!!!!!  ****************************");
+        }
 
         // Setting boss phases
         //if (SquidPhases.PHASE_TWO.Equals(_squidPhase))

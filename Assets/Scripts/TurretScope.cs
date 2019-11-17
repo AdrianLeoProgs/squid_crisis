@@ -17,7 +17,9 @@ public class TurretScope : MonoBehaviour
 
     public float nextTimeToFire = 0f;
     
-    public GameObject WaterSplash;
+    public GameObject waterSplash;
+
+    public GameObject targetHitSplash;
 
     public GameObject muzzleflashEffect;
 
@@ -53,11 +55,13 @@ public class TurretScope : MonoBehaviour
                 {
                     // destroy target instance
                     GameManager.getInstance.removeTarget(hitObject);
+                    GameObject targetHitSplash = Instantiate(this.targetHitSplash, hit.point, Quaternion.LookRotation(hit.normal));
+                    Destroy(targetHitSplash, 2f);
                     // Destroy(hit.collider.gameObject);
                 }
                 if (hit.collider.gameObject.CompareTag("Water"))
                 {
-                    GameObject waterSplashes = Instantiate(WaterSplash, hit.point, Quaternion.LookRotation(hit.normal));
+                    GameObject waterSplashes = Instantiate(waterSplash, hit.point, Quaternion.LookRotation(hit.normal));
                     Destroy(waterSplashes, 2f);
                 }
             }
