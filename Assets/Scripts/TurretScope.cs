@@ -19,6 +19,14 @@ public class TurretScope : MonoBehaviour
     
     public GameObject WaterSplash;
 
+    public GameObject muzzleflashEffect;
+
+    public GameObject smokeEffect;
+
+    public Transform muzzlePivot;
+
+    public Transform smokePivot;
+
     void Start()
     {
         triggerPulled.AddOnStateDownListener(TriggerDown, hand);
@@ -34,6 +42,8 @@ public class TurretScope : MonoBehaviour
             nextTimeToFire = Time.time + 1f / fireRate;
             Vector3 forward = transform.TransformDirection(Vector3.back) * 100;
             Debug.DrawRay(transform.position, forward, Color.green);
+            Instantiate(muzzleflashEffect, muzzlePivot.position, muzzlePivot.rotation);
+            Instantiate(smokeEffect, smokePivot.position, smokePivot.rotation);
             RaycastHit hit;
             bool raycasthit = Physics.Raycast(transform.position, forward, out hit, 100);
             if (raycasthit)
