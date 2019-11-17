@@ -364,7 +364,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5e39359eecfd8bc46bb865080a66d41c, type: 2}
+  - {fileID: 2100000, guid: edfb8b56bedc30246a7ff7a553d267f2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearColorMode: 2
+  clearColorMode: 0
   backgroundColorHDR: {r: 0.254717, g: 0.254717, b: 0.254717, a: 0}
   clearDepth: 1
   volumeLayerMask:
