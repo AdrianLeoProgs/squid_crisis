@@ -8,12 +8,11 @@ public class Tentacle : MonoBehaviour
 
     public Animator animator;
 
-    public String animatorBool;
+    public string attackBool;
 
     void Start() 
     {
-        // Set the animation
-        animator.SetBool(animatorBool, true);
+        
     }
 
     void Update() 
@@ -33,9 +32,16 @@ public class Tentacle : MonoBehaviour
         }
     }
 
-    IEnumertor AnimationTransition()
+    IEnumerator AnimationTransition()
     {
-        animator.SetBool(animatorBool, false);
+        if (animator.GetBool(attackBool))
+        {
+            animator.SetBool("RetreatFromAttackTransition", true);
+        }
+        else
+        {
+            animator.SetBool("RetreatTransition", true);
+        }
         // yield wait can be altered to diff time when we figure out about how long the end animation usually takes
         yield return new WaitForSeconds(2f);
         Destroy(gameObject, 2);
