@@ -10,11 +10,15 @@ public class Tentacle : MonoBehaviour
 
     public string attackTrigger;
 
-    private float startAttackTimer = 5f;
+    [SerializeField]
+    private float startAttackTimer;
 
     void Start() 
     {
-
+        if (startAttackTimer == 0f)
+        {
+            startAttackTimer = 5f;
+        }
     }
 
     void Update() 
