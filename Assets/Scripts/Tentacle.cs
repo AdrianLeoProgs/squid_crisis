@@ -19,7 +19,7 @@ public class Tentacle : MonoBehaviour
     void Update() 
     {
         // destroy self and transistion animation if all targets are destroyed
-        if (targets.Length() < 1)
+        if (targets.Count < 1)
         {
             StartCoroutine("AnimationTransition");   
         }
