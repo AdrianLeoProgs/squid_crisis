@@ -24,5 +24,13 @@ namespace Valve.VR
                 return SteamVR_Actions.turret_set_Shoot;
             }
         }
+        
+        public virtual SteamVR_Action_Vibration Something
+        {
+            get
+            {
+                return SteamVR_Actions.turret_set_Something;
+            }
+        }
     }
 }
