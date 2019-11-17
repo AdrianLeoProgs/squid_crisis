@@ -16,6 +16,16 @@ public class TurretScope : MonoBehaviour
     public float fireRate = 15f;
 
     public float nextTimeToFire = 0f;
+    
+    public GameObject WaterSplash;
+
+    public GameObject muzzleflashEffect;
+
+    public GameObject smokeEffect;
+
+    public Transform muzzlePivot;
+
+    public Transform smokePivot;
 
     void Start()
     {
@@ -25,22 +35,30 @@ public class TurretScope : MonoBehaviour
 
     void FixedUpdate() 
     {
-        print(GameManager.getInstance.squidMainHealth);
         if (isShooting && Time.time >= nextTimeToFire)
         {
             vibration.Execute(0, 1, 320, 1, hand);
             nextTimeToFire = Time.time + 1f / fireRate;
             Vector3 forward = transform.TransformDirection(Vector3.back) * 100;
             Debug.DrawRay(transform.position, forward, Color.green);
+            Instantiate(muzzleflashEffect, muzzlePivot.position, muzzlePivot.rotation);
+            Instantiate(smokeEffect, smokePivot.position, smokePivot.rotation);
             RaycastHit hit;
             bool raycasthit = Physics.Raycast(transform.position, forward, out hit, 100);
             if (raycasthit)
             {
-                bool colliderhit = hit.collider.gameObject.CompareTag("Target");
+                GameObject hitObject = hit.collider.gameObject;
+                bool colliderhit = hitObject.CompareTag("Target");
                 if (colliderhit)
                 {
                     // destroy target instance
-                    Destroy(hit.collider.gameObject);
+                    GameManager.getInstance.removeTarget(hitObject);
+                    // Destroy(hit.collider.gameObject);
+                }
+                if (hit.collider.gameObject.CompareTag("Water"))
+                {
+                    GameObject waterSplashes = Instantiate(WaterSplash, hit.point, Quaternion.LookRotation(hit.normal));
+                    Destroy(waterSplashes, 2f);
                 }
             }
 
