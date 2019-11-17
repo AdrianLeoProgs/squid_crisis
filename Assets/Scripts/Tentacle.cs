@@ -36,7 +36,6 @@ public class Tentacle : MonoBehaviour
             animator.SetBool(attackTrigger, true);
         }
 
-        Debug.Log("Targets " + targets.Count);
     }
 
     void OnCollisionEnter(Collision other) 
@@ -46,9 +45,10 @@ public class Tentacle : MonoBehaviour
             GameManager.getInstance.playerHealth -= 1;
         }
     }
-void HitHealth(){
-    GameManager.getInstance.playerHealth -= 1;
-}
+    void HitHealth() {
+        GameManager.getInstance.playerHealth -= 1;
+    }
+
     IEnumerator AnimationTransition()
     {
         if (animator.GetBool(attackTrigger))

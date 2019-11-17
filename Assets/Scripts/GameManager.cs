@@ -105,19 +105,20 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // Always enable the tentacle in tentacleSet (since list will change dynamically)
-        if (!phaseOneTentacleSet[0].activeSelf)
+        if (phaseOneTentacleSet.Count > 0 && !phaseOneTentacleSet[0].activeSelf)
         {
             phaseOneTentacleSet[0].SetActive(true);
         }
 
         // Check for tentacle set count of current phase (more can be added later)
-        //if (animator.GetBool("PhaseOne") && phaseOneTentacleSet.Count < 1)
-        //{
+        if (phaseOneTentacleSet.Count < 1)
+        {
             // For now since we are only doing one phase, killing all tentacles in this will beat the boss
-           // GameManager.getInstance.squidMainHealth -= 100;
-            // "PhaseTwo" in this case can just be the boss end phase until we feel more confident we can add additional phases
-           // squidPhase = SquidPhases.PHASE_TWO;
-       // }
+           GameManager.getInstance.squidMainHealth -= 100;
+            //"PhaseTwo" in this case can just be the boss end phase until we feel more confident we can add additional phases
+           squidPhase = SquidPhases.PHASE_TWO;
+            Debug.Log("****************************  YOU WIN!!!!!  ****************************");
+       }
 
         // Setting boss phases
         //if (SquidPhases.PHASE_TWO.Equals(_squidPhase))
