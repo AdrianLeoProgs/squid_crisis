@@ -36,11 +36,13 @@ public class TurretScope : MonoBehaviour
             bool raycasthit = Physics.Raycast(transform.position, forward, out hit, 100);
             if (raycasthit)
             {
-                bool colliderhit = hit.collider.gameObject.CompareTag("Target");
+                GameObject hitObject = hit.collider.gameObject;
+                bool colliderhit = hitObject.CompareTag("Target");
                 if (colliderhit)
                 {
                     // destroy target instance
-                    Destroy(hit.collider.gameObject);
+                    GameManager.getInstance.activateNextTentacle(hitObject);
+                    // Destroy(hit.collider.gameObject);
                 }
             }
 

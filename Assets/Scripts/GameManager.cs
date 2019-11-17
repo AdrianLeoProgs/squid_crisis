@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     public Animator animator;
 
-    public List<List<GameObject>> phaseOneTentacleSet;
+    public List<GameObject> phaseOneTentacleSet;
 
     // Ensure thread safety for Game Manager
     public static GameManager getInstance
@@ -88,14 +88,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Awake() 
+    void Awake()
     {
-        foreach (List<GameObject> tentacles in phaseOneTentacleSet)
+        foreach (GameObject tentacle in phaseOneTentacleSet)
         {
-            foreach (GameObject tentacle in tentacles)
-            {
-                tentacle.SetActive(false);
-            }
+            tentacle.SetActive(false);
         }
     }
 
@@ -107,16 +104,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        // Remove tentacle list from tentacleSet if said list is empty (shift the "first" index)
-        if (phaseOneTentacleSet[0].Count < 1)
+        // Always enable the tentacle in tentacleSet (since list will change dynamically)
+        if (!phaseOneTentacleSet[0].activeSelf)
         {
-            phaseOneTentacleSet.Remove(phaseOneTentacleSet[0]);
-        }
-
-        // Always enable the first List of tentacles in tentacleSet (since list will change dynamically)
-        foreach (GameObject tentacle in phaseOneTentacleSet[0])
-        {
-            tentacle.SetActive(true);
+            phaseOneTentacleSet[0].SetActive(true);
         }
 
         // Check for tentacle set count of current phase (more can be added later)
@@ -139,6 +130,14 @@ public class GameManager : MonoBehaviour
         {
             animator.SetBool("PhaseTwo", false);
             animator.SetBool("PhaseThree", true);
+        }
+    }
+
+    public void activateNextTentacle(GameObject tentacle)
+    {
+        if (phaseOneTentacleSet != null && phaseOneTentacleSet[0] != null)
+        {
+            phaseOneTentacleSet.Remove(tentacle);
         }
     }
 }
