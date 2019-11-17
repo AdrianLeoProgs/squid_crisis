@@ -46,7 +46,9 @@ public class Tentacle : MonoBehaviour
             GameManager.getInstance.playerHealth -= 1;
         }
     }
-
+void HitHealth(){
+    GameManager.getInstance.playerHealth -= 1;
+}
     IEnumerator AnimationTransition()
     {
         if (animator.GetBool(attackTrigger))
