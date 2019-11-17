@@ -111,26 +111,26 @@ public class GameManager : MonoBehaviour
         }
 
         // Check for tentacle set count of current phase (more can be added later)
-        if (animator.GetBool("PhaseOne") && phaseOneTentacleSet.Count < 1)
-        {
+        //if (animator.GetBool("PhaseOne") && phaseOneTentacleSet.Count < 1)
+        //{
             // For now since we are only doing one phase, killing all tentacles in this will beat the boss
-            GameManager.getInstance.squidMainHealth -= 100;
+           // GameManager.getInstance.squidMainHealth -= 100;
             // "PhaseTwo" in this case can just be the boss end phase until we feel more confident we can add additional phases
-            squidPhase = SquidPhases.PHASE_TWO;
-        }
+           // squidPhase = SquidPhases.PHASE_TWO;
+       // }
 
         // Setting boss phases
-        if (SquidPhases.PHASE_TWO.Equals(_squidPhase))
-        {
-            animator.SetBool("PhaseOne", false);
-            animator.SetBool("PhaseTwo", true);
-        }
-        // May never get to this point
-        else if (SquidPhases.PHASE_THREE.Equals(_squidPhase))
-        {
-            animator.SetBool("PhaseTwo", false);
-            animator.SetBool("PhaseThree", true);
-        }
+        //if (SquidPhases.PHASE_TWO.Equals(_squidPhase))
+        //{
+        //    animator.SetBool("PhaseOne", false);
+        //    animator.SetBool("PhaseTwo", true);
+        //}
+        //// May never get to this point
+        //else if (SquidPhases.PHASE_THREE.Equals(_squidPhase))
+        //{
+        //    animator.SetBool("PhaseTwo", false);
+        //    animator.SetBool("PhaseThree", true);
+        //}
     }
 
     public void activateNextTentacle(GameObject tentacle)

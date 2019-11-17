@@ -48,8 +48,8 @@ public class TurretScope : MonoBehaviour
                 }
                 if (hit.collider.gameObject.CompareTag("Water"))
                 {
-                    GameObject WaterSplashes = Instantiate(WaterSplash, hit.point, Quaternion.LookRotation(hit.normal));
-                    Destroy(WaterSplashes, 2f);
+                    GameObject waterSplashes = Instantiate(WaterSplash, hit.point, Quaternion.LookRotation(hit.normal));
+                    Destroy(waterSplashes, 2f);
                 }
             }
 
