@@ -27,7 +27,6 @@ public class TurretScope : MonoBehaviour
 
     void FixedUpdate() 
     {
-        print(GameManager.getInstance.squidMainHealth);
         if (isShooting && Time.time >= nextTimeToFire)
         {
             vibration.Execute(0, 1, 320, 1, hand);
