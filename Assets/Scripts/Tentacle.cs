@@ -31,6 +31,8 @@ public class Tentacle : MonoBehaviour
         {
             animator.SetBool(attackTrigger, true);
         }
+
+        Debug.Log("Targets " + targets.Count);
     }
 
     void OnCollisionEnter(Collision other) 
