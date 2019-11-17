@@ -21,6 +21,8 @@ public class TurretScope : MonoBehaviour
 
     public GameObject targetHitSplash;
 
+    public GameObject bodyHitSplash;
+
     public GameObject muzzleflashEffect;
 
     public GameObject smokeEffect;
@@ -50,8 +52,7 @@ public class TurretScope : MonoBehaviour
             if (raycasthit)
             {
                 GameObject hitObject = hit.collider.gameObject;
-                bool colliderhit = hitObject.CompareTag("Target");
-                if (colliderhit)
+                if (hitObject.CompareTag("Target"))
                 {
                     // destroy target instance
                     GameManager.getInstance.removeTarget(hitObject);
@@ -59,10 +60,15 @@ public class TurretScope : MonoBehaviour
                     Destroy(targetHitSplash, 2f);
                     // Destroy(hit.collider.gameObject);
                 }
-                if (hit.collider.gameObject.CompareTag("Water"))
+                if (hitObject.CompareTag("Water"))
                 {
                     GameObject waterSplashes = Instantiate(waterSplash, hit.point, Quaternion.LookRotation(hit.normal));
                     Destroy(waterSplashes, 2f);
+                }
+                if (hitObject.CompareTag("Squid"))
+                {
+                    GameObject bodySplashes = Instantiate(bodyHitSplash, hit.point, Quaternion.LookRotation(hit.normal));
+                    Destroy(bodySplashes, 2f);
                 }
             }
 
