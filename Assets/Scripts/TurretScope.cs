@@ -16,6 +16,8 @@ public class TurretScope : MonoBehaviour
     public float fireRate = 15f;
 
     public float nextTimeToFire = 0f;
+    
+    public GameObject WaterSplash;
 
     void Start()
     {
@@ -43,6 +45,11 @@ public class TurretScope : MonoBehaviour
                     // destroy target instance
                     GameManager.getInstance.activateNextTentacle(hitObject);
                     // Destroy(hit.collider.gameObject);
+                }
+                if (hit.collider.gameObject.CompareTag("Water"))
+                {
+                    GameObject WaterSplashes = Instantiate(WaterSplash, hit.point, Quaternion.LookRotation(hit.normal));
+                    Destroy(WaterSplashes, 2f);
                 }
             }
 
