@@ -87,7 +87,7 @@
       "type": "boolean"
     },
     {
-      "name": "/actions/turret_set/out/Something",
+      "name": "/actions/turret_set/out/Vibrate",
       "type": "vibration"
     }
   ],

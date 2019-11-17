@@ -6,6 +6,8 @@ using Valve.VR;
 public class TurretScope : MonoBehaviour
 {
     public SteamVR_Action_Boolean triggerPulled;
+    
+    public SteamVR_Action_Vibration vibration;
 
     public SteamVR_Input_Sources hand;
 
@@ -18,7 +20,7 @@ public class TurretScope : MonoBehaviour
     void Start()
     {
         triggerPulled.AddOnStateDownListener(TriggerDown, hand);
-        triggerPulled.AddOnStateUpListener(TriggerUp, hand);
+        triggerPulled.AddOnStateUpListener(TriggerUp, hand);       
     }
 
     void FixedUpdate() 
@@ -26,6 +28,7 @@ public class TurretScope : MonoBehaviour
         print(GameManager.getInstance.squidMainHealth);
         if (isShooting && Time.time >= nextTimeToFire)
         {
+            vibration.Execute(0, 1, 320, 1, hand);
             nextTimeToFire = Time.time + 1f / fireRate;
             Vector3 forward = transform.TransformDirection(Vector3.back) * 100;
             Debug.DrawRay(transform.position, forward, Color.green);

@@ -25,11 +25,11 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Vibration Something
+        public virtual SteamVR_Action_Vibration Vibrate
         {
             get
             {
-                return SteamVR_Actions.turret_set_Something;
+                return SteamVR_Actions.turret_set_Vibrate;
             }
         }
     }
