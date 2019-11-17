@@ -1,13 +1,13 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1102 &-2130844633176342385
+--- !u!1102 &-7842701045336420781
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Armature|NewRigTest1_002
+  m_Name: Armature|Import_test1
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -20,7 +20,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 8898965440289158306, guid: 388e7eb7ff7a2304f851bc089b5bd1bc,
+  m_Motion: {fileID: 6839507020638712031, guid: 2c61697ee5e43074bb9e274bed7156a5,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -59,15 +59,15 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: -2130844633176342385}
-    m_Position: {x: 367, y: 203, z: 0}
+    m_State: {fileID: -7842701045336420781}
+    m_Position: {x: 374, y: 252, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
-  m_EntryPosition: {x: 50, y: 120, z: 0}
+  m_EntryPosition: {x: 60, y: 190, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -2130844633176342385}
+  m_DefaultState: {fileID: -7842701045336420781}
