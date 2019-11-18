@@ -153,6 +153,9 @@ public class GameManager : MonoBehaviour
         if (phaseOneTentacleSet != null && phaseOneTentacleSet[0] != null)
         {
             Debug.Log("Removing target...");
+           Transform TargetToDestroy = target.transform.GetChild(1);
+           ParticleSystem TargetParticle = TargetToDestroy.GetComponentInChildren<ParticleSystem>();
+           TargetParticle.Stop();
             phaseOneTentacleSet[0].GetComponent<Tentacle>().targets.Remove(target);
 
             // If targets are less than 1, remove the tentacle from the tentacle set

@@ -9,7 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Water Splash II
   m_Shader: {fileID: 4800000, guid: c4edd00ff2db5b24391a4fcb1762e459, type: 3}
-  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _BLENDMODE_PRE_MULTIPLY _EMISSION _SURFACE_TYPE_TRANSPARENT
+  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _ALPHATEST_ON _BLENDMODE_ALPHA _EMISSION
+    _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -74,10 +75,10 @@ Material:
     - _AddPrecomputedVelocity: 0
     - _AlbedoAffectEmissive: 0
     - _AlphaCutoff: 0.5
-    - _AlphaCutoffEnable: 0
+    - _AlphaCutoffEnable: 1
     - _AlphaDstBlend: 10
     - _AlphaSrcBlend: 1
-    - _BlendMode: 4
+    - _BlendMode: 0
     - _BumpScale: 1
     - _CullMode: 2
     - _Cutoff: 0.5
