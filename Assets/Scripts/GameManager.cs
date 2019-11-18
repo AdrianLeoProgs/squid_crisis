@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> phaseOneTentacleSet;
     public AudioSource TentKillSound;
+    public AudioSource MainMusic;
+    public AudioSource WinMusic;
 
     // Ensure thread safety for Game Manager
     public static GameManager getInstance
@@ -172,12 +174,18 @@ public class GameManager : MonoBehaviour
     {
         winCanvas.SetActive(true);
         loseCanvas.SetActive(false);
+        WinMusic.Play();
+        MainMusic.Stop();
+       
     }
 
     public void LoseCondition()
     {
         loseCanvas.SetActive(true);
         winCanvas.SetActive(false);
+       WinMusic.Play();
+        MainMusic.Stop();
+        
     }
 }
 

@@ -18,7 +18,7 @@ public class Tentacle : MonoBehaviour
 public AudioSource HitSound;
     void Start() 
     {
-        HitOverlay.enabled=false;
+       // HitOverlay.enabled=false;
         if (startAttackTimer == 0f)
         {
             startAttackTimer = 5f;
