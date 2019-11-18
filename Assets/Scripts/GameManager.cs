@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject loseCanvas;
 
     public List<GameObject> phaseOneTentacleSet;
+    public AudioSource TentKillSound;
 
     // Ensure thread safety for Game Manager
     public static GameManager getInstance
@@ -162,6 +163,7 @@ public class GameManager : MonoBehaviour
             if (phaseOneTentacleSet[0].GetComponent<Tentacle>().targets.Count < 1)
             {
                 phaseOneTentacleSet.Remove(phaseOneTentacleSet[0]);
+                TentKillSound.Play();
             }
         }
     }

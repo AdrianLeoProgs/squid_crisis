@@ -14,7 +14,8 @@ public class Tentacle : MonoBehaviour
 
     [SerializeField]
     private float startAttackTimer;
-
+    public Canvas HitOverlay;
+public AudioSource HitSound;
     void Start() 
     {
         if (startAttackTimer == 0f)
@@ -50,10 +51,19 @@ public class Tentacle : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             GameManager.getInstance.playerHealth -= 1;
+            
         }
     }
     void HitHealth() {
         GameManager.getInstance.playerHealth -= 1;
+        HitOverlay.enabled=true;
+        HitSound.Play();
+
+    }
+    void RemoveOverlay() {
+        
+        HitOverlay.enabled=false;
+
     }
 
     IEnumerator AnimationTransition()

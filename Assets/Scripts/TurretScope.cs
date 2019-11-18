@@ -32,6 +32,7 @@ public class TurretScope : MonoBehaviour
 
     public Transform smokePivot;
     public AudioSource machineGunRapid;
+    public AudioSource SquidHurtSound;
 
 
     private void Awake()
@@ -67,6 +68,8 @@ public class TurretScope : MonoBehaviour
                     GameManager.getInstance.removeTarget(hitObject);
                     GameObject targetHitSplash = Instantiate(this.targetHitSplash, hit.point, Quaternion.LookRotation(hit.normal));
                     Destroy(targetHitSplash, 2f);
+                    SquidHurtSound.Play();
+
                 }
                 else if (hitObject.CompareTag("Water"))
                 {
@@ -77,6 +80,7 @@ public class TurretScope : MonoBehaviour
                 {
                     GameObject bodySplashes = Instantiate(bodyHitSplash, hit.point, Quaternion.LookRotation(hit.normal));
                     Destroy(bodySplashes, 2f);
+                    
                 }
             }
 
