@@ -30,6 +30,7 @@ public class TurretScope : MonoBehaviour
     public Transform muzzlePivot;
 
     public Transform smokePivot;
+    public AudioSource machineGunRapid;
 
     void Start()
     {
@@ -39,41 +40,46 @@ public class TurretScope : MonoBehaviour
 
     void FixedUpdate() 
     {
-        if (isShooting && Time.time >= nextTimeToFire)
+        if (isShooting)
         {
-            vibration.Execute(0, 1, 320, 1, hand);
-            nextTimeToFire = Time.time + 1f / fireRate;
-            Vector3 forward = transform.TransformDirection(Vector3.back) * 100;
-            Debug.DrawRay(transform.position, forward, Color.green);
-            GameObject muzzleFlash = Instantiate(muzzleflashEffect, muzzlePivot.position, muzzlePivot.rotation);
-            GameObject smokeFlash = Instantiate(smokeEffect, smokePivot.position, smokePivot.rotation);
-            Destroy(muzzleFlash);
-            Destroy(smokeFlash);
-            RaycastHit hit;
-            bool raycasthit = Physics.Raycast(transform.position, forward, out hit, 100);
-            if (raycasthit)
+            machineGunRapid.Play();
+            if (Time.time >= nextTimeToFire)
             {
-                GameObject hitObject = hit.collider.gameObject;
-                if (hitObject.CompareTag("Target"))
-                {
-                    // destroy target instance
-                    GameManager.getInstance.removeTarget(hitObject);
-                    GameObject targetHitSplash = Instantiate(this.targetHitSplash, hit.point, Quaternion.LookRotation(hit.normal));
-                    Destroy(targetHitSplash, 2f);
-                }
-                else if (hitObject.CompareTag("Water"))
-                {
-                    GameObject waterSplashes = Instantiate(waterSplash, hit.point, Quaternion.LookRotation(hit.normal));
-                    Destroy(waterSplashes, 2f);
-                }
-                else if (hitObject.CompareTag("Squid"))
-                {
-                    print("Hit squid body");
-                    GameObject bodySplashes = Instantiate(bodyHitSplash, hit.point, Quaternion.LookRotation(hit.normal));
-                    Destroy(bodySplashes, 2f);
-                }
-            }
 
+                vibration.Execute(0, 1, 320, 1, hand);
+                nextTimeToFire = Time.time + 1f / fireRate;
+                Vector3 forward = transform.TransformDirection(Vector3.back) * 100;
+                Debug.DrawRay(transform.position, forward, Color.green);
+                GameObject muzzleFlash = Instantiate(muzzleflashEffect, muzzlePivot.position, muzzlePivot.rotation);
+                GameObject smokeFlash = Instantiate(smokeEffect, smokePivot.position, smokePivot.rotation);
+                Destroy(muzzleFlash);
+                Destroy(smokeFlash);
+                RaycastHit hit;
+                bool raycasthit = Physics.Raycast(transform.position, forward, out hit, 100);
+                if (raycasthit)
+                {
+                    GameObject hitObject = hit.collider.gameObject;
+                    if (hitObject.CompareTag("Target"))
+                    {
+                        // destroy target instance
+                        GameManager.getInstance.removeTarget(hitObject);
+                        GameObject targetHitSplash = Instantiate(this.targetHitSplash, hit.point, Quaternion.LookRotation(hit.normal));
+                        Destroy(targetHitSplash, 2f);
+                    }
+                    else if (hitObject.CompareTag("Water"))
+                    {
+                        GameObject waterSplashes = Instantiate(waterSplash, hit.point, Quaternion.LookRotation(hit.normal));
+                        Destroy(waterSplashes, 2f);
+                    }
+                    else if (hitObject.CompareTag("Squid"))
+                    {
+                        print("Hit squid body");
+                        GameObject bodySplashes = Instantiate(bodyHitSplash, hit.point, Quaternion.LookRotation(hit.normal));
+                        Destroy(bodySplashes, 2f);
+                    }
+                }
+
+            }
         }
     }
 
