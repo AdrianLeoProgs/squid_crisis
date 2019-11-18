@@ -57,6 +57,8 @@ namespace Valve.VR
         
         private static SteamVR_Action_Boolean p_turret_set_Shoot;
         
+        private static SteamVR_Action_Boolean p_turret_set_SelectMenuItem;
+        
         private static SteamVR_Action_Vibration p_turret_set_Vibrate;
         
         public static SteamVR_Action_Boolean default_InteractUI
@@ -219,6 +221,14 @@ namespace Valve.VR
             }
         }
         
+        public static SteamVR_Action_Boolean turret_set_SelectMenuItem
+        {
+            get
+            {
+                return SteamVR_Actions.p_turret_set_SelectMenuItem.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
         public static SteamVR_Action_Vibration turret_set_Vibrate
         {
             get
@@ -250,6 +260,7 @@ namespace Valve.VR
                     SteamVR_Actions.buggy_Reset,
                     SteamVR_Actions.mixedreality_ExternalCamera,
                     SteamVR_Actions.turret_set_Shoot,
+                    SteamVR_Actions.turret_set_SelectMenuItem,
                     SteamVR_Actions.turret_set_Vibrate};
             Valve.VR.SteamVR_Input.actionsIn = new Valve.VR.ISteamVR_Action_In[] {
                     SteamVR_Actions.default_InteractUI,
@@ -270,7 +281,8 @@ namespace Valve.VR
                     SteamVR_Actions.buggy_Brake,
                     SteamVR_Actions.buggy_Reset,
                     SteamVR_Actions.mixedreality_ExternalCamera,
-                    SteamVR_Actions.turret_set_Shoot};
+                    SteamVR_Actions.turret_set_Shoot,
+                    SteamVR_Actions.turret_set_SelectMenuItem};
             Valve.VR.SteamVR_Input.actionsOut = new Valve.VR.ISteamVR_Action_Out[] {
                     SteamVR_Actions.default_Haptic,
                     SteamVR_Actions.turret_set_Vibrate};
@@ -291,7 +303,8 @@ namespace Valve.VR
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Brake,
                     SteamVR_Actions.buggy_Reset,
-                    SteamVR_Actions.turret_set_Shoot};
+                    SteamVR_Actions.turret_set_Shoot,
+                    SteamVR_Actions.turret_set_SelectMenuItem};
             Valve.VR.SteamVR_Input.actionsSingle = new Valve.VR.SteamVR_Action_Single[] {
                     SteamVR_Actions.default_Squeeze,
                     SteamVR_Actions.buggy_Throttle};
@@ -317,7 +330,8 @@ namespace Valve.VR
                     SteamVR_Actions.buggy_Throttle,
                     SteamVR_Actions.buggy_Brake,
                     SteamVR_Actions.buggy_Reset,
-                    SteamVR_Actions.turret_set_Shoot};
+                    SteamVR_Actions.turret_set_Shoot,
+                    SteamVR_Actions.turret_set_SelectMenuItem};
         }
         
         private static void PreInitActions()
@@ -342,6 +356,7 @@ namespace Valve.VR
             SteamVR_Actions.p_buggy_Reset = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/buggy/in/Reset")));
             SteamVR_Actions.p_mixedreality_ExternalCamera = ((SteamVR_Action_Pose)(SteamVR_Action.Create<SteamVR_Action_Pose>("/actions/mixedreality/in/ExternalCamera")));
             SteamVR_Actions.p_turret_set_Shoot = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/turret_set/in/Shoot")));
+            SteamVR_Actions.p_turret_set_SelectMenuItem = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/turret_set/in/SelectMenuItem")));
             SteamVR_Actions.p_turret_set_Vibrate = ((SteamVR_Action_Vibration)(SteamVR_Action.Create<SteamVR_Action_Vibration>("/actions/turret_set/out/Vibrate")));
         }
     }

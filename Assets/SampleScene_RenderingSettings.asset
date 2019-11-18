@@ -132,7 +132,7 @@ MonoBehaviour:
     m_Value: 0
   exposure:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: -0.93
   multiplier:
     m_OverrideState: 1
     m_Value: 1
@@ -177,7 +177,7 @@ MonoBehaviour:
     showEyeDropper: 1
   groundColor:
     m_OverrideState: 1
-    m_Value: {r: 0.17221431, g: 0.28404057, b: 0.4245283, a: 1}
+    m_Value: {r: 0.3003738, g: 0.5306666, b: 0.7075472, a: 1}
     hdr: 0
     showAlpha: 1
     showEyeDropper: 1
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2150ee00179b2f4418ea8b21a7e98eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   colorMode:
     m_OverrideState: 1
@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 384c4d03a551c44448145f4093304119, type: 3}
   m_Name: ScreenSpaceReflection
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   depthBufferThickness:
     m_OverrideState: 0
@@ -337,4 +337,4 @@ MonoBehaviour:
     m_Value: 0
   fogType:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 0

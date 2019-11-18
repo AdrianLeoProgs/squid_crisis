@@ -6,6 +6,8 @@ public class Tentacle : MonoBehaviour
 {
     public List<GameObject> targets;
 
+    public GameObject targetOrb;
+
     public Animator animator;
 
     public string attackTrigger;
@@ -18,6 +20,11 @@ public class Tentacle : MonoBehaviour
         if (startAttackTimer == 0f)
         {
             startAttackTimer = 5f;
+        }
+
+        foreach (GameObject target in targets)
+        {
+            Instantiate(targetOrb, target.transform.position, Quaternion.identity, target.transform);
         }
     }
 

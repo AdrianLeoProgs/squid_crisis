@@ -125,8 +125,12 @@ public class GameManager : MonoBehaviour
             //"PhaseTwo" in this case can just be the boss end phase until we feel more confident we can add additional phases
            squidPhase = SquidPhases.PHASE_TWO;
            WinCondition();
-            Debug.Log("****************************  YOU WIN!!!!!  ****************************");
        }
+        Debug.Log("Player Health: " + playerHealth);
+        if (playerHealth < 1)
+        {
+            LoseCondition();
+        }
 
         // Setting boss phases
         //if (SquidPhases.PHASE_TWO.Equals(_squidPhase))
@@ -162,10 +166,16 @@ public class GameManager : MonoBehaviour
     public void WinCondition()
     {
         winCanvas.SetActive(true);
+        loseCanvas.SetActive(false);
     }
 
     public void LoseCondition()
     {
-        loseCanvas.SetActive(false);
+        loseCanvas.SetActive(true);
+        winCanvas.SetActive(false);
     }
 }
+
+// Win: X: -0.44406 Y: 8.12 Z: -1.1101
+
+// Lose: 
