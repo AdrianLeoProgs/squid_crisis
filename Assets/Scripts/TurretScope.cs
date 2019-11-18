@@ -60,14 +60,13 @@ public class TurretScope : MonoBehaviour
                     GameManager.getInstance.removeTarget(hitObject);
                     GameObject targetHitSplash = Instantiate(this.targetHitSplash, hit.point, Quaternion.LookRotation(hit.normal));
                     Destroy(targetHitSplash, 2f);
-                    // Destroy(hit.collider.gameObject);
                 }
-                if (hitObject.CompareTag("Water"))
+                else if (hitObject.CompareTag("Water"))
                 {
                     GameObject waterSplashes = Instantiate(waterSplash, hit.point, Quaternion.LookRotation(hit.normal));
                     Destroy(waterSplashes, 2f);
                 }
-                if (hitObject.CompareTag("Squid"))
+                else if (hitObject.CompareTag("Squid"))
                 {
                     print("Hit squid body");
                     GameObject bodySplashes = Instantiate(bodyHitSplash, hit.point, Quaternion.LookRotation(hit.normal));
