@@ -45,8 +45,10 @@ public class TurretScope : MonoBehaviour
             nextTimeToFire = Time.time + 1f / fireRate;
             Vector3 forward = transform.TransformDirection(Vector3.back) * 100;
             Debug.DrawRay(transform.position, forward, Color.green);
-            Instantiate(muzzleflashEffect, muzzlePivot.position, muzzlePivot.rotation);
-            Instantiate(smokeEffect, smokePivot.position, smokePivot.rotation);
+            GameObject muzzleFlash = Instantiate(muzzleflashEffect, muzzlePivot.position, muzzlePivot.rotation);
+            GameObject smokeFlash = Instantiate(smokeEffect, smokePivot.position, smokePivot.rotation);
+            Destroy(muzzleFlash);
+            Destroy(smokeFlash);
             RaycastHit hit;
             bool raycasthit = Physics.Raycast(transform.position, forward, out hit, 100);
             if (raycasthit)
@@ -67,6 +69,7 @@ public class TurretScope : MonoBehaviour
                 }
                 if (hitObject.CompareTag("Squid"))
                 {
+                    print("Hit squid body");
                     GameObject bodySplashes = Instantiate(bodyHitSplash, hit.point, Quaternion.LookRotation(hit.normal));
                     Destroy(bodySplashes, 2f);
                 }
