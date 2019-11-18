@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
+using UnityEngine.SceneManagement;
 
 public class TurretScope : MonoBehaviour
 {
@@ -32,6 +33,11 @@ public class TurretScope : MonoBehaviour
     public Transform smokePivot;
     public AudioSource machineGunRapid;
 
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(machineGunRapid);
+    }
     void Start()
     {
         triggerPulled.AddOnStateDownListener(TriggerDown, hand);
@@ -51,7 +57,7 @@ public class TurretScope : MonoBehaviour
             Instantiate(muzzleflashEffect, muzzlePivot.position, muzzlePivot.rotation);
             Instantiate(smokeEffect, smokePivot.position, smokePivot.rotation);
             RaycastHit hit;
-            bool raycasthit = Physics.Raycast(transform.position, forward, out hit, 100);
+            bool raycasthit = Physics.Raycast(transform.position, forward, out hit,100);
             if (raycasthit)
             {
                 GameObject hitObject = hit.collider.gameObject;
@@ -69,7 +75,6 @@ public class TurretScope : MonoBehaviour
                 }
                 else if (hitObject.CompareTag("Squid"))
                 {
-                    print("Hit squid body");
                     GameObject bodySplashes = Instantiate(bodyHitSplash, hit.point, Quaternion.LookRotation(hit.normal));
                     Destroy(bodySplashes, 2f);
                 }
@@ -82,12 +87,19 @@ public class TurretScope : MonoBehaviour
     public void TriggerUp(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
     {
         isShooting = false;
-        machineGunRapid.Stop();
+        if (machineGunRapid != null)
+        {
+            machineGunRapid.Stop();
+        }
     }
 
     public void TriggerDown(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource)
     {
         isShooting = true;
-        machineGunRapid.Play();
+        if (machineGunRapid != null)
+        {
+            machineGunRapid.Play();
+
+        }
     }
 }

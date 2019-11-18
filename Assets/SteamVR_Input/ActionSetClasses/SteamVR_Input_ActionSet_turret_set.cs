@@ -25,6 +25,14 @@ namespace Valve.VR
             }
         }
         
+        public virtual SteamVR_Action_Boolean SelectMenuItem
+        {
+            get
+            {
+                return SteamVR_Actions.turret_set_SelectMenuItem;
+            }
+        }
+        
         public virtual SteamVR_Action_Vibration Vibrate
         {
             get

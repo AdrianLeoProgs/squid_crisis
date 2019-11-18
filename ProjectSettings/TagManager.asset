@@ -8,6 +8,9 @@ TagManager:
   - Water
   - CatchSplash
   - Target
+  - FxTemporaire
+  - projectile
+  - PlayAgainButton
   layers:
   - Default
   - TransparentFX
