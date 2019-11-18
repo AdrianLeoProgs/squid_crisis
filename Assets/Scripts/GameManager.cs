@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
            squidPhase = SquidPhases.PHASE_TWO;
            WinCondition();
        }
-        Debug.Log("Player Health: " + playerHealth);
+        //Debug.Log("Player Health: " + playerHealth);
         if (playerHealth < 1)
         {
             LoseCondition();

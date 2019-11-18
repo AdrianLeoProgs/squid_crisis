@@ -57,7 +57,7 @@ public class TurretScope : MonoBehaviour
             Instantiate(muzzleflashEffect, muzzlePivot.position, muzzlePivot.rotation);
             Instantiate(smokeEffect, smokePivot.position, smokePivot.rotation);
             RaycastHit hit;
-            bool raycasthit = Physics.Raycast(transform.position, forward, out hit,100);
+            bool raycasthit = Physics.Raycast(transform.position, forward, out hit,100000);
             if (raycasthit)
             {
                 GameObject hitObject = hit.collider.gameObject;
