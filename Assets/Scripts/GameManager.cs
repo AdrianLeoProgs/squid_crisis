@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
 
     public Animator animator;
 
+    public GameObject winCanvas;
+
+    public GameObject loseCanvas;
+
     public List<GameObject> phaseOneTentacleSet;
 
     // Ensure thread safety for Game Manager
@@ -94,6 +98,9 @@ public class GameManager : MonoBehaviour
         {
             tentacle.SetActive(false);
         }
+
+        winCanvas.SetActive(false);
+        loseCanvas.SetActive(false);
     }
 
     void Start()
@@ -117,6 +124,7 @@ public class GameManager : MonoBehaviour
            GameManager.getInstance.squidMainHealth -= 100;
             //"PhaseTwo" in this case can just be the boss end phase until we feel more confident we can add additional phases
            squidPhase = SquidPhases.PHASE_TWO;
+           WinCondition();
             Debug.Log("****************************  YOU WIN!!!!!  ****************************");
        }
 
@@ -149,5 +157,15 @@ public class GameManager : MonoBehaviour
                 phaseOneTentacleSet.Remove(phaseOneTentacleSet[0]);
             }
         }
+    }
+
+    public void WinCondition()
+    {
+        winCanvas.SetActive(true);
+    }
+
+    public void LoseCondition()
+    {
+        loseCanvas.SetActive(false);
     }
 }
